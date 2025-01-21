@@ -4,6 +4,7 @@ import com.app.server.interfaces.ChatServer;
 import com.app.server.interfaces.ClientHandler;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class ChatServerImpl implements ChatServer {
 
     @Override
     public void start() {
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
+        try (ServerSocket serverSocket = new ServerSocket(12345, 50, InetAddress.getByName("0.0.0.0"))) {
             System.out.println("Server started. Waiting for clients...");
 
             while (true) {
